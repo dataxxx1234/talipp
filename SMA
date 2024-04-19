@@ -1,0 +1,9 @@
+def calculate_sma(data, period):
+    sma_values = []
+    for i in range(len(data)):
+        if i < period - 1:
+            sma_values.append(None)
+        else:
+            sma = sum(data[i - period + 1:i + 1]) / period
+            sma_values.append(sma)
+    return sma_values
