@@ -1,0 +1,14 @@
+def calculate_ema(data, period):
+    ema_values = []
+    multiplier = 2 / (period + 1)
+    
+    # Tính toán EMA cho các giá trị đầu tiên
+    sma_first_period = sum(data[:period]) / period
+    ema_values.append(sma_first_period)
+    
+    # Tính toán EMA cho các giá trị còn lại
+    for i in range(period, len(data)):
+        ema = (data[i] - ema_values[-1]) * multiplier + ema_values[-1]
+        ema_values.append(ema)
+    
+    return ema_values
